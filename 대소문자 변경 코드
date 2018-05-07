@@ -1,0 +1,24 @@
+import java.util.Scanner;
+
+public class WapperDemo {
+	public static void main(String[] agrs){
+		int i;
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("문자열을 입력하세요:");
+		String str = scanner.nextLine();
+		System.out.print("대소문자 변환:");
+		for(int index = 0;index<str.length();index++){
+			if(64<(int)str.charAt(index) && (int)str.charAt(index)<91){
+				i = (int)str.charAt(index) + 32;
+				System.out.print((char)i);
+				}
+			else if(96<(int)str.charAt(index) && (int)str.charAt(index)<123){
+				i = (int)str.charAt(index) - 32;
+				System.out.print((char)i);
+			}
+			else
+				System.out.print(str.charAt(index));
+		}
+		scanner.close();
+	}
+}
