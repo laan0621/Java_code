@@ -20,20 +20,17 @@ public class UserDB {
 			e.printStackTrace();
 		}
 	}
+	//ì‚¬ìš©ì ì¶”ê°€
 	public void addUser(User u){
 		String stgender = new String();
 		if (u.getGender() == 1)
-			stgender = "³²¼º";
+			stgender = "ë‚¨ì„±";
 		else if (u.getGender() == 2)
-			stgender = "¿©¼º";
+			stgender = "ì—¬ì„±";
 		else
-			stgender = "°ø°³ÇÏÁö¾ÊÀ½";
+			stgender = "ê³µê°œí•˜ì§€ì•ŠìŒ";
 		StringBuilder sb = new StringBuilder();
-		String id = u.getId();
-		String name = u.getName();
-		int age = u.getAge();
-		String pw = u.getPw();
-		String sql = sb.append("insert into " + this.table + " values('"+id+"','"+name+"',"+age+",'"+stgender+"','"+pw+"');").toString();
+		String sql = sb.append("insert into " + this.table + " values('"+u.getId()+"','"+u.getName()+"',"+u.getAge()+",'"+stgender+"','"+u.getPw()+"');").toString();
 		try {
 			stmt.executeUpdate(sql);
 		} catch (SQLException e) {
@@ -41,6 +38,7 @@ public class UserDB {
 			e.printStackTrace();
 		}
 	}
+	//ì‚¬ìš©ì ì‚­ì œ
 	public void delUser(String id, String pw){
 		StringBuilder sb = new StringBuilder();
         String sql = sb.append("delete from " + table + " where id = ")
@@ -53,8 +51,9 @@ public class UserDB {
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
-        }
+        	}
 	}
+	//ì‚¬ìš©ì ì •ë³´ ìˆ˜ì •
 	public void upDateUser(User u){
 		StringBuilder sb = new StringBuilder();
         String sql = sb.append("update " + table + " set")
@@ -71,8 +70,9 @@ public class UserDB {
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
-        }
+       		}
 	}
+	//ì „ì²´ ì‚¬ìš©ì ì¶œë ¥
 	public void printAllUser(){
 		StringBuilder sb = new StringBuilder();
         String sql = sb.append("select * from " + table)
@@ -80,16 +80,17 @@ public class UserDB {
         try {
 			ResultSet rs = stmt.executeQuery(sql);
 			while(rs.next()){
-                System.out.print("¾ÆÀÌµğ:"+rs.getString("id"));
-                System.out.print(", ÀÌ¸§:"+rs.getString("name"));
-                System.out.print(", ³ªÀÌ:"+rs.getInt("age"));
-                System.out.print(", ¼ºº°:"+rs.getString("gender")+"\n");
+                System.out.print("ì•„ì´ë””:"+rs.getString("id"));
+                System.out.print(", ì´ë¦„:"+rs.getString("name"));
+                System.out.print(", ë‚˜ì´:"+rs.getInt("age"));
+                System.out.print(", ì„±ë³„:"+rs.getString("gender")+"\n");
            }
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
+	//ì‚¬ìš©ì 
 	public void findUser(String id){
 		StringBuilder sb = new StringBuilder();
         String sql = sb.append("select * from " + table + " where")
@@ -99,10 +100,10 @@ public class UserDB {
         try {
 			ResultSet rs = stmt.executeQuery(sql);
 			if (rs.next()){
-			System.out.print("¾ÆÀÌµğ:"+rs.getString("id"));
-            System.out.print(", ÀÌ¸§:"+rs.getString("name"));
-            System.out.print(", ³ªÀÌ:"+rs.getInt("age"));
-            System.out.print(", ¼ºº°:"+rs.getString("gender")+"\n");
+			System.out.print("ì•„ì´ë””:"+rs.getString("id"));
+            System.out.print(", ì´ë¦„:"+rs.getString("name"));
+            System.out.print(", ë‚˜ì´:"+rs.getInt("age"));
+            System.out.print(", ì„±ë³„:"+rs.getString("gender")+"\n");
 			}
 			} catch (SQLException e) {
 			// TODO Auto-generated catch block
