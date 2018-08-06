@@ -10,7 +10,7 @@ public class input {
 		String database = "users";
 		String url = "jdbc:mysql://localhost:3306/" + database;
 		String id = "root";
-		String pw = "no040621";
+		String pw = "";
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			conn = DriverManager.getConnection(url, id, pw);
@@ -23,27 +23,27 @@ public class input {
 			stmt.execute(sql);
 			Scanner scanner = new Scanner(System.in);
 			int num = 0;
-			System.out.print("1:»ç¿ëÀÚ Ãß°¡\n2:»ç¿ëÀÚ Á¤º¸ ¼öÁ¤\n3:»ç¿ëÀÚ »èÁ¦\n4:»ç¿ëÀÚ °Ë»ö\n5:»ç¿ëÀÚ ÀüÃ¼º¸±â\n6:Á¾·á\n");
+			System.out.print("1:ì‚¬ìš©ì ì¶”ê°€\n2:ì‚¬ìš©ì ì •ë³´ ìˆ˜ì •\n3:ì‚¬ìš©ì ì‚­ì œ\n4:ì‚¬ìš©ì ê²€ìƒ‰\n5:ì‚¬ìš©ì ì „ì²´ë³´ê¸°\n6:ì¢…ë£Œ\n");
 			do {
 				UserDB uDB = new UserDB(conn, table);
-				System.out.println("ÀÔ·Â:");
+				System.out.println("ì…ë ¥:");
 				num = scanner.nextInt();
 				switch (num) {
-				case 1:// »ç¿ëÀÚ Ãß°¡
+				case 1:// ì‚¬ìš©ì ì¶”ê°€
 					String checkpw = "";
 					User u1 = new User();
 					do {
-						System.out.println("¾ÆÀÌµğ ÀÔ·Â:");
+						System.out.println("ì•„ì´ë”” ì…ë ¥:");
 						u1.setId(scanner.next());
-						System.out.println("ºñ¹Ğ¹øÈ£ ÀÔ·Â:");
+						System.out.println("ë¹„ë°€ë²ˆí˜¸ ì…ë ¥:");
 						u1.setPw(scanner.next());
-						System.out.println("ºñ¹Ğ¹øÈ£ È®ÀÎ:");
+						System.out.println("ë¹„ë°€ë²ˆí˜¸ í™•ì¸:");
 						checkpw = scanner.next();
-						System.out.println("ÀÌ¸§ ÀÔ·Â:");
+						System.out.println("ì´ë¦„ ì…ë ¥:");
 						u1.setName(scanner.next());
-						System.out.println("¼ºº° ÀÔ·Â(1:³²¼º, 2:¿©¼º, ±âÅ¸:°ø°³ÇÏÁö ¾ÊÀ½):");
+						System.out.println("ì„±ë³„ ì…ë ¥(1:ë‚¨ì„±, 2:ì—¬ì„±, ê¸°íƒ€:ê³µê°œí•˜ì§€ ì•ŠìŒ):");
 						u1.setGender(scanner.nextInt());
-						System.out.println("³ªÀÌ ÀÔ·Â:");
+						System.out.println("ë‚˜ì´ ì…ë ¥:");
 						u1.setAge(scanner.nextInt());
 						try {
 							StringBuilder sb2 = new StringBuilder();
@@ -56,11 +56,11 @@ public class input {
 							}
 							if (check == 1) {
 								if (!(checkpw.equals(u1.getPw())))
-									System.out.println("ºñ¹Ğ¹øÈ£¸¦ Àß¸ø ÀÔ·ÂÇÏ¼Ì½À´Ï´Ù.");
+									System.out.println("ë¹„ë°€ë²ˆí˜¸ë¥¼ ì˜ëª» ì…ë ¥í•˜ì…¨ìŠµë‹ˆë‹¤.");
 								else
 									uDB.addUser(u1);
 							} else
-								System.out.println("Áßº¹µÈ ¾ÆÀÌµğ ÀÔ´Ï´Ù");
+								System.out.println("ì¤‘ë³µëœ ì•„ì´ë”” ì…ë‹ˆë‹¤");
 						} catch (SQLException e1) {
 							// TODO Auto-generated catch block
 							e1.printStackTrace();
@@ -68,41 +68,41 @@ public class input {
 
 					} while (checkpw.equals(u1.getPw()) == false);
 					break;
-				case 2:// »ç¿ëÀÚ Á¤º¸ ¼öÁ¤
+				case 2:// ì‚¬ìš©ì ì •ë³´ ìˆ˜ì •
 					User u2 = new User();
-					System.out.println("¾ÆÀÌµğ ÀÔ·Â:");
+					System.out.println("ì•„ì´ë”” ì…ë ¥:");
 					u2.setId(scanner.next());
-					System.out.println("ºñ¹Ğ¹øÈ£ ÀÔ·Â:");
+					System.out.println("ë¹„ë°€ë²ˆí˜¸ ì…ë ¥:");
 					u2.setPw(scanner.next());
-					System.out.println("¼öÁ¤ÇÒ ÀÌ¸§ ÀÔ·Â:");
+					System.out.println("ìˆ˜ì •í•  ì´ë¦„ ì…ë ¥:");
 					u2.setName(scanner.next());
-					System.out.println("¼öÁ¤ÇÒ ³ªÀÌ ÀÔ·Â:");
+					System.out.println("ìˆ˜ì •í•  ë‚˜ì´ ì…ë ¥:");
 					u2.setAge(scanner.nextInt());
 					uDB.upDateUser(u2);
 					break;
-				case 3:// »ç¿ëÀÚ »èÁ¦
+				case 3:// ì‚¬ìš©ì ì‚­ì œ
 					String id2;
 					String pw2;
-					System.out.println("¾ÆÀÌµğ ÀÔ·Â:");
+					System.out.println("ì•„ì´ë”” ì…ë ¥:");
 					id2 = scanner.next();
-					System.out.println("ºñ¹Ğ¹øÈ£ ÀÔ·Â:");
+					System.out.println("ë¹„ë°€ë²ˆí˜¸ ì…ë ¥:");
 					pw2 = scanner.next();
 					uDB.delUser(id2, pw2);
 					break;
-				case 4:// »ç¿ëÀÚ °Ë»ö
+				case 4:// ì‚¬ìš©ì ê²€ìƒ‰
 					String id3;
-					System.out.println("¾ÆÀÌµğ ÀÔ·Â:");
+					System.out.println("ì•„ì´ë”” ì…ë ¥:");
 					id3 = scanner.next();
 					uDB.findUser(id3);
 					break;
-				case 5:// »ç¿ëÀÚ ÀüÃ¼º¸±â
-					System.out.println("»ç¿ëÀÚ ¸®½ºÆ®");
+				case 5:// ì‚¬ìš©ì ì „ì²´ë³´ê¸°
+					System.out.println("ì‚¬ìš©ì ë¦¬ìŠ¤íŠ¸");
 					uDB.printAllUser();
 					break;
-				case 6:// Á¾·á
+				case 6:// ì¢…ë£Œ
 					break;
 				default:
-					System.out.println("Àß¸øµÈ °ªÀ» ÀÔ·ÂÇÏ¼Ì½À´Ï´Ù.");
+					System.out.println("ì˜ëª»ëœ ê°’ì„ ì…ë ¥í•˜ì…¨ìŠµë‹ˆë‹¤.");
 				}
 			} while (num != 6);
 			conn.close();
@@ -113,7 +113,7 @@ public class input {
 			e.printStackTrace();
 		} finally {
 			try {
-				// »ç¿ëÇÑ connection ´İ±â
+				// ì‚¬ìš©í•œ connection ë‹«ê¸°
 				if (conn != null && !conn.isClosed())
 					conn.close();
 			} catch (SQLException e) {
